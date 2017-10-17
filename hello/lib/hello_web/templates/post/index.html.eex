@@ -1,3 +1,7 @@
+<div>
+  <%= link "Home", to: page_path(@conn, :index) %>
+</div>
+
 <h2>Listing Posts</h2>
 
 <table class="table">
