@@ -7,6 +7,7 @@
 <table class="table">
   <thead>
     <tr>
+      <th>Post</th>
       <th>Text</th>
 
       <th></th>
@@ -15,6 +16,7 @@
   <tbody>
 <%= for comment <- @comments do %>
     <tr>
+      <td><%= link comment.post_id, to: post_path(@conn, :show, comment.post_id) %></td>
       <td><%= comment.text %></td>
 
       <td class="text-right">

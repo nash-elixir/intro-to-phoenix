@@ -3,6 +3,11 @@
 <ul>
 
   <li>
+    <strong>Post:</strong>
+    <td><%= link @comment.post_id, to: post_path(@conn, :show, @comment.post_id) %></td>
+  </li>
+
+  <li>
     <strong>Text:</strong>
     <%= @comment.text %>
   </li>
