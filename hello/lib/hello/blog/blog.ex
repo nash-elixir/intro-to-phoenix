@@ -18,7 +18,10 @@ defmodule Hello.Blog do
 
   """
   def list_posts do
-    Repo.all(Post)
+    (from p in Post,
+       preload: :comments
+    )
+    |> Repo.all
   end
 
   @doc """
@@ -35,7 +38,13 @@ defmodule Hello.Blog do
       ** (Ecto.NoResultsError)
 
   """
-  def get_post!(id), do: Repo.get!(Post, id)
+  def get_post!(id) do
+    (from p in Post,
+       where: p.id == ^id,
+       preload: :comments
+    )
+    |> Repo.one!
+  end
 
   @doc """
   Creates a post.

@@ -14,5 +14,15 @@
 
 </ul>
 
+<p><strong>Comments</strong></p>
+<%= for comment <- @post.comments do %>
+  <div>
+    <span><%= link comment.id, to: comment_path(@conn, :show, comment.id) %></span>
+    <%= comment.text %>
+  </div>
+<%= end %>
+
+<br />
+
 <span><%= link "Edit", to: post_path(@conn, :edit, @post) %></span>
 <span><%= link "Back", to: post_path(@conn, :index) %></span>
