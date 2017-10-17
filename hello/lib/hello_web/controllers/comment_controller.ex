@@ -6,7 +6,7 @@ defmodule HelloWeb.CommentController do
 
   def index(conn, _params) do
     comments = Blog.list_comments()
-    render(conn, "index.html", comments: comments)
+    render(conn, :index, comments: comments)
   end
 
   def new(conn, _params) do
@@ -27,7 +27,7 @@ defmodule HelloWeb.CommentController do
 
   def show(conn, %{"id" => id}) do
     comment = Blog.get_comment!(id)
-    render(conn, "show.html", comment: comment)
+    render(conn, :show, comment: comment)
   end
 
   def edit(conn, %{"id" => id}) do

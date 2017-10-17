@@ -6,7 +6,7 @@ defmodule HelloWeb.PostController do
 
   def index(conn, _params) do
     posts = Blog.list_posts()
-    render(conn, "index.html", posts: posts)
+    render(conn, :index, posts: posts)
   end
 
   def new(conn, _params) do
@@ -27,7 +27,7 @@ defmodule HelloWeb.PostController do
 
   def show(conn, %{"id" => id}) do
     post = Blog.get_post!(id)
-    render(conn, "show.html", post: post)
+    render(conn, :show, post: post)
   end
 
   def edit(conn, %{"id" => id}) do

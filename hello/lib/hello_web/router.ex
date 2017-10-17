@@ -22,7 +22,9 @@ defmodule HelloWeb.Router do
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", HelloWeb do
-  #   pipe_through :api
-  # end
+  scope "/api", HelloWeb do
+    pipe_through :api
+    resources "/posts", PostController, except: [:new, :edit], as: :posts_api
+    resources "/comments", CommentController, except: [:new, :edit], as: :comments_api
+  end
 end
