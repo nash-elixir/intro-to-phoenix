@@ -6,15 +6,15 @@
 ---
 
 1. [Elixir](https://elixir-lang.org/install.html) It may be necessary to install Erlang manually.
-1. [Hex](https://hexdocs.pm/phoenix/installation.html#elixir-1-4-or-later)
+2. [Hex](https://hexdocs.pm/phoenix/installation.html#elixir-1-4-or-later)
 ```bash
 mix local.hex
 ```
-1. [Phoenix Archive](https://hexdocs.pm/phoenix/installation.html#phoenix)
+3. [Phoenix Archive](https://hexdocs.pm/phoenix/installation.html#phoenix)
 ```bash
 mix archive.install https://github.com/phoenixframework/archives/raw/master/phx_new.ez
 ```
-1. [Local Postgres](https://wiki.postgresql.org/wiki/Detailed_installation_guides)
+4. [Local Postgres](https://wiki.postgresql.org/wiki/Detailed_installation_guides)
 ```bash
 nohup postgres >logfile 2>&1 </dev/null &
 ```
@@ -77,4 +77,31 @@ mix ecto.migrate
 
 ### Explore The Endpoint
 
+Start the server
+
+```bash
+[iex -S] mix phx.server
+```
+
 Navigate to `http://localhost:4000/posts`
+
+## Add Another Page
+
+Generate:
+```bash
+mix phx.gen.html Blog Comment comments message:text post_id:references:post
+```
+
+Add route:
+```elixir
+resources "/comments", CommentController
+```
+Migrate:
+```bash
+mix ecto.migrate
+```
+
+Start:
+```bash
+[iex -S] mix phx.server
+```
